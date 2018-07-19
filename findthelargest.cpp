@@ -10,30 +10,26 @@ using namespace std;
 要求时间复杂度为O(n)，空间复杂度为O(1)*/
 
 int thelargest(int a[],int k) {
-	int i = 0;
-	while (a[i] != '\0') {
-		i++;
-	}//得到数组的最大长度i
-
-	int sl = i-1;//等于数组的下标值
+	int i = sizeof(a) / sizeof(int);//得到数组的最大长度i
+	int sl = i;//等于数组的下标值
 	int *p = new int[sl];//定义存放最后结果的数组
 	
-	int key = a[0];
-	for (i =sl; i >= 0; i--) {
-		if (a[i] > key) {
-			key = a[i];
+	int max = a[0];
+	for (i =sl-1; i >= 0; i--) {
+		if (a[i] > max) {
+			max = a[i];
 		}
 	}//找到原数组的最大值key
-	int m = key;
+	int m = max+1;
 	int *q = new int[m];//定义用来存放频率的数组
-	for (int j = 0; j <m; j++) {
+	for (int j = 0; j <=max; j++) {
 		q [j] = 0;//初始化该数组，另该数组的值都为0
 	}
 
-	for (int j = 0; j < m; j++) {
+	for (int j = 0; j < sl; j++) {
 		q[a[j]]++;//存放每个数字出现的频率
 	}
-	for (int j = m-1; j >0; j++) {
+	for (int j = m-1; j >0; j--) {
 		q[j] = q[j] + q[j - 1];//把这个数的大小排序出来
 	}
 	for (i = sl - 1; i >= 0; --i)
@@ -41,9 +37,10 @@ int thelargest(int a[],int k) {
 		p[q[a[i]] - 1] = a[i];//把数字放进数组里面
 		q[a[i]]--;//放进去了一个就减一
 	}
-	return p[k-1];
+	int c = *(p+k - 1);
 	delete[] p;
-	delete[]q;
+	delete[] q;
+	return c;
 }
 
 int main() {
