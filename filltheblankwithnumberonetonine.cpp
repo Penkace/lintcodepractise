@@ -1,5 +1,5 @@
-□□/************************
-  >File Name: Fill blanks with numbers one to nine. □ □ □ + □ □ □=□ □ □
+/************************
+  >File Name: Fill blanks with numbers one to nine. □ □ □ + □ □ □ = □ □ □
   >Author：Penkace
   >Refences: 《啊哈！算法》
   >Time: 2018-08-01 Wednesday
