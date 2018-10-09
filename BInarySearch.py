@@ -7,20 +7,20 @@ class Solution:
     """
     def binarySearch(self, nums, target):
         # write your code here
-        return self.binaryFind(self,nums,target,0,len(nums))
+        return self.binaryFind(nums,target,0,len(nums))   #self 放在外边而不是作为实例参数
     def binaryFind(self,nums,target,left,right):
-        if left>right:
+        if left>=right:
             return -1
         if nums[left]==target:
             return left
         mid=(left+right)//2
-        if nums[mid]==target and nums[mid-1]!=nums[mid]:
+        if nums[mid]==target and nums[mid-1]!=target:
             return mid
-        elif nums[mid]>=target:
+        if nums[mid]>=target:
             right=mid
-            return binaryFind(self,nums,target,left,right)
+            return self.binaryFind(nums,target,left,right)
         elif nums[mid]<target:
-            left=mid
-            return binaryFind(self,nums,target,left,right)
+            left=mid+1
+            return self.binaryFind(nums,target,left,right)
         else:
             return -1
