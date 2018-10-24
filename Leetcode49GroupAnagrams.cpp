@@ -13,7 +13,7 @@ public:
             string s=strs[i];
             sort(s.begin(),s.end());
             if(res.find(s)!=res.end()){            //如果在表中能够找到，则把该字符串放入到res中
-                res[s].push_back(strs[i]);
+                res[s].push_back(strs[i]);         //因为查找表res的第二个维度是一个vector数组，所以可以把找到的strs[i]给存储到这个anagrams中
             }else{
                 vector<string>result={strs[i]};    //否则就需要往表中添加该字符串
                 res[s]=result;
