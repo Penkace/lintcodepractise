@@ -10,7 +10,7 @@ struct ListNode {
   ListNode *next;
 };
 
-/*********************** 328. Odd Even Linked List / 86. Partition List *************************/
+/*********************** 328. Odd Even Linked List / 86. Partition List /445. Add Two Numbers II *************************/
 class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
@@ -55,5 +55,57 @@ public:
         lesscur->next=pre->next;
         front->next=NULL;
         return leftstart->next;
+    }
+  
+  ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        stack<int>s1,s2;
+        ListNode* res=NULL;
+        ListNode* result=NULL;
+        int flag=0;
+        int temp=0;
+        int i,j;
+        while(l1!=NULL){
+            s1.push(l1->val);
+            l1=l1->next;
+        }
+        while(l2!=NULL){
+            s2.push(l2->val);
+            l2=l2->next;
+        }
+        while(!s1.empty()&&!s2.empty()){
+            i=s1.top();
+            j=s2.top();
+            s1.pop();
+            s2.pop();
+            temp=i+j+flag;
+            flag=temp/10;
+            res=new ListNode(temp%10);
+            res->next=result;
+            result=res;
+        }
+        while(!s1.empty()){
+            i=s1.top();
+            s1.pop();
+            temp=i+flag;
+            flag=temp/10;
+            res=new ListNode(temp%10);
+            res->next=result;
+            result=res;
+        }
+        while(!s2.empty()){
+            j=s2.top();
+            s2.pop();
+            temp=j+flag;
+            flag=temp/10;
+            res=new ListNode(temp%10);
+            res->next=result;
+            result=res;
+        }
+        if(flag!=0){
+            res=new ListNode(flag);
+            res->next=result;
+            result=res;
+        }
+        return result;
     }
 };
