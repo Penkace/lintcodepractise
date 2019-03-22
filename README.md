@@ -1,2 +1,2 @@
 # lintcodepractise
-This package is fill with the code of the lintcode.
+This package is fill with the code of the leetcode and linkcode.
